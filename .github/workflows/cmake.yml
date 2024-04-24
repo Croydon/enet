@@ -12,10 +12,22 @@ jobs:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
         build_type: ["Debug", "Release"]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+    - name: "[Shared] Configure CMake"
+      run: cmake --preset=${{ matrix.build_type }}-Shared -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/${{ matrix.build_type }}-Shared/install/
 
-    - name: Build
-      run: cmake --build ${{github.workspace}}/build --config ${{ matrix.build_type }}      
+    - name: "[Shared] Build"
+      run: cmake --build ${{github.workspace}}/build/${{ matrix.build_type }}-Shared
+
+    - name: "[Shared] Install"
+      run: cmake --install ${{github.workspace}}/build/${{ matrix.build_type }}-Shared
+
+    - name: "[Static] Configure CMake"
+      run: cmake --preset=${{ matrix.build_type }}-Static -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/${{ matrix.build_type }}-Static/install/
+
+    - name: "[Static] Build"
+      run: cmake --build ${{github.workspace}}/build/${{ matrix.build_type }}-Static
+
+    - name: "[Static] Install"
+      run: cmake --install ${{github.workspace}}/build/${{ matrix.build_type }}-Static
