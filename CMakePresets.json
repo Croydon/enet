@@ -10,6 +10,7 @@
             "name": "Release-Shared",
             "description": "Release Shared",
             "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "BUILD_SHARED_LIBS": "ON"
@@ -19,6 +20,7 @@
             "name": "Release-Static",
             "description": "Release Static",
             "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release",
                 "BUILD_SHARED_LIBS": "OFF"
@@ -28,6 +30,7 @@
             "name": "Debug-Shared",
             "description": "Debug Shared",
             "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "BUILD_SHARED_LIBS": "ON"
@@ -37,6 +40,7 @@
             "name": "Debug-Static",
             "description": "Debug Static",
             "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "BUILD_SHARED_LIBS": "OFF"
